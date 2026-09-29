@@ -4,14 +4,31 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import jakarta.persistence.Entity; import jakarta.persistence.FetchType; import jakarta.persistence.GeneratedValue; import jakarta.persistence.GenerationType; import jakarta.persistence.Id; import jakarta.persistence.OneToMany; import jakarta.validation.Valid; import jakarta.validation.constraints.NotNull;
+import jakarta.persistence.Entity; 
+import jakarta.persistence.FetchType; 
+import jakarta.persistence.GeneratedValue; 
+import jakarta.persistence.GenerationType; 
+import jakarta.persistence.Id; 
+import jakarta.persistence.OneToMany; 
+import jakarta.validation.Valid; 
+import jakarta.validation.constraints.NotNull;
 
 @Entity public class Customer {
-     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) private Long id;
+     @Id 
+     @GeneratedValue(strategy = GenerationType.IDENTITY) 
+     private Long id;
 
-@Valid @NotNull(message = "Name cannot be null") private String name; @NotNull(message = "Email cannot be null") private String email; @NotNull(message = "Phone No cannot be null") private String phone;
+     
+    @NotNull(message = "Name cannot be null") 
+    private String name; 
+    @NotNull(message = "Email cannot be null") 
+    private String email; 
+    @NotNull(message = "Phone No cannot be null") 
+    private String phone;
 
-@OneToMany(mappedBy = "customer",fetch = FetchType.EAGER) @JsonManagedReference private List orders;
+@OneToMany(mappedBy = "customer",fetch = FetchType.EAGER) 
+@JsonManagedReference 
+private List orders;
 
 // Getters and Setters
 

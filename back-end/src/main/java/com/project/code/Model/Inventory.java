@@ -1,17 +1,35 @@
 package com.project.code.Model;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import jakarta.persistence.Entity; 
+import jakarta.persistence.GeneratedValue; 
+import jakarta.persistence.GenerationType; 
+import jakarta.persistence.Id; 
+import jakarta.persistence.JoinColumn; 
+import jakarta.persistence.ManyToOne;
 
+@Entity
 public class Inventory {
    // 1. Add 'id' field:
 //    - Type: private long 
 //    - This field will represent the unique identifier for the inventory entry.
 //    - Use @Id to mark it as the primary key.
 //    - Use @GeneratedValue(strategy = GenerationType.IDENTITY) to auto-increment it.
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 // 2. Add 'product' field:
 //    - Type: private Product
 //    - This field will represent the product associated with the inventory entry.
 //    - Use @ManyToOne to establish a many-to-one relationship with the Product entity.
+
+@ManyToOne
+@JsonBackReference("inventory-product")
+@JoinColumn(name="product_id")
+private Product product;
+
+
+
 
 // 3. Add 'store' field:
 //    - Type: private Store
@@ -21,7 +39,7 @@ public class Inventory {
 // 4. Add 'stockLevel' field:
 //    - Type: private Integer
 //    - This field will represent the current stock level of the product at the store.
-
+    private Integer stockLevel;
 // 5. Add relationships:
 //    - **Product Relationship**: Use @ManyToOne to link this inventory entry to a product.
 //    - **Store Relationship**: Use @ManyToOne to link this inventory entry to a store.
