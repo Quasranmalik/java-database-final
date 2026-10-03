@@ -14,15 +14,12 @@ public class Customer {
      @Id 
      @GeneratedValue(strategy = GenerationType.IDENTITY) 
      private Long id;
-
-     
     @NotNull(message = "Name cannot be null") 
     private String name; 
     @NotNull(message = "Email cannot be null") 
     private String email; 
     @NotNull(message = "Phone No cannot be null") 
     private String phone;
-
     @OneToMany(mappedBy = "customer",fetch = FetchType.EAGER) 
     @JsonManagedReference 
     private List<OrderDetails> orders;
