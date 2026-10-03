@@ -28,7 +28,7 @@ import jakarta.validation.constraints.NotNull;
 
 @OneToMany(mappedBy = "customer",fetch = FetchType.EAGER) 
 @JsonManagedReference 
-private List orders;
+private List<OrderDetails> orders;
 
 // Getters and Setters
 
