@@ -13,7 +13,8 @@ import jakarta.persistence.OneToMany;
 import jakarta.validation.Valid; 
 import jakarta.validation.constraints.NotNull;
 
-@Entity public class Customer {
+@Entity 
+public class Customer {
      @Id 
      @GeneratedValue(strategy = GenerationType.IDENTITY) 
      private Long id;
